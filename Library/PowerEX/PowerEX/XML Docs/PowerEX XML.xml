@@ -1,0 +1,316 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PowerEX</name>
+    </assembly>
+    <members>
+        <member name="T:PowerEX.BooleanEvaluator">
+            <summary>
+            Parses and evaluates boolean expressions.
+            </summary>
+        </member>
+        <member name="M:PowerEX.BooleanEvaluator.Evaluate(System.String)">
+            <summary>
+            Parses and evaluates a simple boolean expression.
+            </summary>
+            <param name="Expression">The expression to parse</param>
+            <returns>The result of the expression.</returns>
+        </member>
+        <member name="T:PowerEX.EmptyContext">
+            <summary>
+            Defines an empty evaluator context.
+            </summary>
+        </member>
+        <member name="M:PowerEX.EmptyContext.Call(System.String,System.Decimal[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:PowerEX.EmptyContext.Resolve(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:PowerEX.IContext">
+            <summary>
+            A simple interface to define an evaluator context.
+            </summary>
+        </member>
+        <member name="M:PowerEX.IContext.Call(System.String,System.Decimal[])">
+            <summary>
+            Calls a function in the expression.
+            </summary>
+            <param name="Identifier">The function name.</param>
+            <param name="Arguments">The function arguments.</param>
+            <returns>The function return value.</returns>
+        </member>
+        <member name="M:PowerEX.IContext.Resolve(System.String)">
+            <summary>
+            Resolves variables in the mathematical expression.
+            </summary>
+            <param name="Identifier">The variable name.</param>
+            <returns>The variable value.</returns>
+        </member>
+        <member name="T:PowerEX.BinaryNode">
+            <summary>
+            A node that calculates a simple operation between 2 other nodes.
+            </summary>
+        </member>
+        <member name="P:PowerEX.BinaryNode.Operation">
+            <summary>
+            The node operation.
+            </summary>
+        </member>
+        <member name="P:PowerEX.BinaryNode.LeftSideNode">
+            <summary>
+            The node on the left of the operator.
+            </summary>
+        </member>
+        <member name="P:PowerEX.BinaryNode.RightSideNode">
+            <summary>
+            The node on the right of the operator.
+            </summary>
+        </member>
+        <member name="M:PowerEX.BinaryNode.Evaluate(PowerEX.IContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PowerEX.BinaryNode.#ctor(PowerEX.INode,PowerEX.INode,System.Func{System.Decimal,System.Decimal,System.Decimal})">
+            <summary>
+            Creates a new binary node.
+            </summary>
+            <param name="LeftSideNode">The node on the left of the operator.</param>
+            <param name="RightSideNode">The node on the right of the operator.</param>
+            <param name="Operation">The node operation.</param>
+        </member>
+        <member name="T:PowerEX.FunctionNode">
+            <summary>
+            A node that represents a function in a mathematical expression.
+            </summary>
+        </member>
+        <member name="P:PowerEX.FunctionNode.Identifier">
+            <summary>
+            The function identifier.
+            </summary>
+        </member>
+        <member name="P:PowerEX.FunctionNode.Arguments">
+            <summary>
+            The arguments of the function.
+            </summary>
+        </member>
+        <member name="M:PowerEX.FunctionNode.Evaluate(PowerEX.IContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PowerEX.FunctionNode.#ctor(System.String,PowerEX.INode[])">
+            <summary>
+            Creates a new function node.
+            </summary>
+            <param name="Identifier">The name / identifier of the function.</param>
+            <param name="Arguments">The function arguments.</param>
+        </member>
+        <member name="T:PowerEX.NumberNode">
+            <summary>
+            A node that represents a number.
+            </summary>
+        </member>
+        <member name="P:PowerEX.NumberNode.Number">
+            <summary>
+            The value of the node.
+            </summary>
+        </member>
+        <member name="M:PowerEX.NumberNode.Evaluate(PowerEX.IContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PowerEX.NumberNode.#ctor(System.Decimal)">
+            <summary>
+            Creates a new number node.
+            </summary>
+            <param name="Number">The node value.</param>
+        </member>
+        <member name="T:PowerEX.UnaryNode">
+            <summary>
+            A node that calculates a simple operation on a single number.
+            </summary>
+        </member>
+        <member name="P:PowerEX.UnaryNode.Operation">
+            <summary>
+            The node's operation.
+            </summary>
+        </member>
+        <member name="P:PowerEX.UnaryNode.RightSideNode">
+            <summary>
+            The node on the right of the operator.
+            </summary>
+        </member>
+        <member name="M:PowerEX.UnaryNode.Evaluate(PowerEX.IContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PowerEX.UnaryNode.#ctor(PowerEX.INode,System.Func{System.Decimal,System.Decimal})">
+            <summary>
+            Creates a new unary node.
+            </summary>
+            <param name="RightSideNode">The node on the right of the operator.</param>
+            <param name="Operation">The node's operation.</param>
+        </member>
+        <member name="T:PowerEX.VariableNode">
+            <summary>
+            A node that represents a variable in a mathematical expression.
+            </summary>
+        </member>
+        <member name="P:PowerEX.VariableNode.Identifier">
+            <summary>
+            The variable's identifier.
+            </summary>
+        </member>
+        <member name="M:PowerEX.VariableNode.Evaluate(PowerEX.IContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PowerEX.VariableNode.#ctor(System.String)">
+            <summary>
+            Creates a new variable node.
+            </summary>
+            <param name="Identifier">The identifier of the variable.</param>
+        </member>
+        <member name="T:PowerEX.INode">
+            <summary>
+            An equation 'node', performs a single operation with other nodes.
+            </summary>
+        </member>
+        <member name="M:PowerEX.INode.Evaluate(PowerEX.IContext)">
+            <summary>
+            Calculates the value of the node.
+            </summary>
+            <param name="Context">The evaluator context to use for variables and functions.</param>
+            <returns>The resulting value of the node.</returns>
+        </member>
+        <member name="T:PowerEX.Parser">
+            <summary>
+            Parses and evaluates mathematical expressions.
+            </summary>
+        </member>
+        <member name="M:PowerEX.Parser.Parse(System.String,PowerEX.IContext)">
+            <summary>
+            Parses and evaluates a mathematical expression.
+            </summary>
+            <param name="Expression">The expression to parse.</param>
+            <param name="Context">The evaluator's function and variable context.</param>
+            <returns>The result of the expression.</returns>
+        </member>
+        <member name="T:PowerEX.Tokenizer">
+            <summary>
+            A tokenizer used by the parser.
+            </summary>
+        </member>
+        <member name="P:PowerEX.Tokenizer.CurrentCharacter">
+            <summary>
+            The current character that the tokenizer is on.
+            </summary>
+        </member>
+        <member name="P:PowerEX.Tokenizer.Identifier">
+            <summary>
+            The current identifier string used to get variable or function identifiers.
+            </summary>
+        </member>
+        <member name="P:PowerEX.Tokenizer.Number">
+            <summary>
+            The current number parsed by the tokenizer.
+            </summary>
+        </member>
+        <member name="P:PowerEX.Tokenizer.Token">
+            <summary>
+            The current parsed token.
+            </summary>
+        </member>
+        <member name="P:PowerEX.Tokenizer.Reader">
+            <summary>
+            The tokenizer's text reader.
+            </summary>
+        </member>
+        <member name="M:PowerEX.Tokenizer.NextToken">
+            <summary>
+            Tells the tokenizer to parse the token at the current character.
+            </summary>
+        </member>
+        <member name="M:PowerEX.Tokenizer.NextCharacter">
+            <summary>
+            Tells the tokenizer to move to the next character.
+            </summary>
+        </member>
+        <member name="M:PowerEX.Tokenizer.#ctor(System.IO.TextReader)">
+            <summary>
+            Creates a tokenizer instance.
+            </summary>
+            <param name="Reader">The tokenizer text reader.</param>
+        </member>
+        <member name="T:PowerEX.Token">
+            <summary>
+            A collection of tokens used in the mathematical expression evaluator.
+            </summary>
+        </member>
+        <member name="F:PowerEX.Token.Identifier">
+            <summary>
+            Variable / Function identifier token.
+            </summary>
+        </member>
+        <member name="F:PowerEX.Token.Number">
+            <summary>
+            Number token.
+            </summary>
+        </member>
+        <member name="F:PowerEX.Token.Comma">
+            <summary>
+            Comma token.
+            </summary>
+        </member>
+        <member name="F:PowerEX.Token.Addition">
+            <summary>
+            Addition operation token.
+            </summary>
+        </member>
+        <member name="F:PowerEX.Token.Subtraction">
+            <summary>
+            Subtraction operation token.
+            </summary>
+        </member>
+        <member name="F:PowerEX.Token.Multiplication">
+            <summary>
+            Multiplication operation token.
+            </summary>
+        </member>
+        <member name="F:PowerEX.Token.Division">
+            <summary>
+            Division operation token.
+            </summary>
+        </member>
+        <member name="F:PowerEX.Token.Modulus">
+            <summary>
+            Modulus operation token.
+            </summary>
+        </member>
+        <member name="F:PowerEX.Token.GreaterThan">
+            <summary>
+            Greater than comparison, returns `1` if true.
+            </summary>
+        </member>
+        <member name="F:PowerEX.Token.LessThan">
+            <summary>
+            Less than comparison, returns `1` if true.
+            </summary>
+        </member>
+        <member name="F:PowerEX.Token.Equal">
+            <summary>
+            Equal comparison, returns `1` if true.
+            </summary>
+        </member>
+        <member name="F:PowerEX.Token.OpeningParenthesis">
+            <summary>
+            Opening parenthesis token.
+            </summary>
+        </member>
+        <member name="F:PowerEX.Token.ClosingParenthesis">
+            <summary>
+            Closing parenthesis token.
+            </summary>
+        </member>
+        <member name="F:PowerEX.Token.EOF">
+            <summary>
+            End of File token.
+            </summary>
+        </member>
+    </members>
+</doc>

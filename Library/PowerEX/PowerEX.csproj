@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+	  <RootNamespace>PowerEX</RootNamespace>
+
+	  <AssemblyVersion>1.0.0</AssemblyVersion>
+	  <FileVersion>1.0.0</FileVersion>
+	  <Version>1.0.0</Version>
+	  <Authors>Thev2Andy</Authors>
+
+	  <DocumentationFile>..\PowerEX\PowerEX\XML Docs\PowerEX XML.xml</DocumentationFile>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<None Include="Resources\Icon\PowerEX Icon.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
+</Project>
