@@ -10,7 +10,7 @@ namespace EXTester
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, World!");
-            Console.Write("Enter a mathematical expression: ");
+            Console.Write("Enter an expression: ");
 
             string Expression = Console.ReadLine();
 
@@ -28,7 +28,7 @@ namespace EXTester
         {
             if (Identifier.ToUpper() == "POW")
             {
-                return (Decimal)Math.Pow((Double)Arguments[0], (Double)Arguments[1]);
+                return ((Decimal)(Math.Pow((Double)Arguments[0], (Double)Arguments[1])));
             }
 
             throw new Exception($"Unknown function `{Identifier}`.");
@@ -38,7 +38,7 @@ namespace EXTester
         {
             if (Identifier.ToUpper() == "PI")
             {
-                return (Decimal)Math.PI;
+                return ((Decimal)(Math.PI));
             }
             
             throw new Exception($"Unknown variable `{Identifier}`.");
