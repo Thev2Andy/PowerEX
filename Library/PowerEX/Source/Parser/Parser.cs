@@ -61,12 +61,12 @@ namespace PowerEX
 
                 else if (Tokenizer.Token == Token.And)
                 {
-                    Operation = ((A, B) => ((A != 0 && B != 0) ? 1m : 0m));
+                    Operation = ((A, B) => (((int)(A)) & ((int)(B)))); // ((A != 0 && B != 0) ? 1m : 0m));
                 }
 
                 else if (Tokenizer.Token == Token.Or)
                 {
-                    Operation = ((A, B) => ((A != 0 || B != 0) ? 1m : 0m));
+                    Operation = ((A, B) => (((int)(A)) | ((int)(B))));// ((A != 0 || B != 0) ? 1m : 0m));
                 }
 
                 else if (Tokenizer.Token == Token.GreaterThan)

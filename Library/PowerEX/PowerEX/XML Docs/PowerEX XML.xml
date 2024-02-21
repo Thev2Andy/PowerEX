@@ -282,12 +282,12 @@
         </member>
         <member name="F:PowerEX.Token.And">
             <summary>
-            And logical operator.
+            And logical / bitwise operator.
             </summary>
         </member>
         <member name="F:PowerEX.Token.Or">
             <summary>
-            Or logical operator.
+            Or logical / bitwise operator.
             </summary>
         </member>
         <member name="F:PowerEX.Token.Not">

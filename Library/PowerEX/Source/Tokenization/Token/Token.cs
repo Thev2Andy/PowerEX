@@ -86,14 +86,14 @@ namespace PowerEX
 
         #region And Enum Entry XML
         /// <summary>
-        /// And logical operator.
+        /// And logical / bitwise operator.
         /// </summary>
         #endregion
         And,
 
         #region Or Enum Entry XML
         /// <summary>
-        /// Or logical operator.
+        /// Or logical / bitwise operator.
         /// </summary>
         #endregion
         Or,
